@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CSE 564 Lab 2b</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="../static/data_mds.js"></script>
+    <script src="../static/parallel.js"></script>
+    <script src="../static/var_mds.js"></script>
+
+    <script type="text/javascript">
+        let json_data = {{ data | tojson}};
+        let data_mds = json_data.data_mds;
+        let var_mds = json_data.var_mds;
+        let k_means_labels = json_data.k_means_labels;
+    </script>
+    <script src="../static/index.js"></script>
+    <style>
+        body {
+            background-color: antiquewhite;
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h2 style="padding: 5px; background-color: #eaf510; color: black;">Spotify Top 100 Songs</h2>
+        </div>
+    </header>
+
+    <div style="text-align: center; margin-top: 10px;">
+        <a id="btn_data_mds"
+            style="background-color: blue; padding: 7px; height: fit-content; text-decoration: none; font-size: large; color: white" href="#"
+            onclick="data_mds_plot()">Data MDS</a>
+        <a id="btn_parallel_coords"
+            style="background-color: blue; padding: 7px; height: fit-content; text-decoration: none; font-size: large; color: white" href="#"
+            onclick="parallel_coords()">Parallel Coordinates</a>
+        <a id="btn_var_mds"
+            style="background-color: blue; padding: 7px; height: fit-content; text-decoration: none; font-size: large; color: white" href="#"
+            onclick="var_mds_plot('var')">Variable MDS</a>
+    </div>
+
+    <div id="svgContainer" class="svgContainer" style="margin-top: 20px;">
+        <svg id="mysvg" width="1200" height="700"></svg>
+    </div>
+
+    <script>
+        let svg = d3.select("#mysvg"),
+            margin = 200,
+            width = svg.attr("width") - margin,
+            height = svg.attr("height") - margin
+
+        data_mds_plot();
+    </script>
+</body>
+
+</html>

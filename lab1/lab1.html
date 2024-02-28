@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        .bar {
+            fill: orange;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <script src="lab1.js"></script>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-uppercase" href="#">Spotify</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <button class="nav-link active btn btn-link">Bar Chart or Histogram</button>
+                    <button class="nav-link btn btn-link">Scatter Plot</button>
+                </div>
+            </div>
+
+            <div class="d-flex">
+
+            </div>
+        </div>
+    </nav>
+
+    <script>
+
+        d3.select('body')
+            .append('svg')
+            .attr('width', 1200)
+            .attr('height', 700)
+
+
+        let svg = d3.select("svg"),
+            margin = 200,
+            width = svg.attr("width") - margin,
+            height = svg.attr("height") - margin
+
+        load_single_feature_selector();
+
+        d3.selectAll('button.nav-link')
+            .on('click', function () {
+
+                d3.selectAll('button.nav-link').classed('active', false)
+                d3.select(this).classed('active', true)
+
+                if (d3.select(this).text() == 'Bar Chart or Histogram') {
+
+                    load_single_feature_selector()
+
+                } else {
+                    load_double_feature_selector()
+                }
+            })
+
+    </script>
+</body>
+
+</html>

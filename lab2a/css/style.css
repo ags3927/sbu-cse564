@@ -1,0 +1,19 @@
+.myclass {
+    color: red
+}
+
+.error {
+    color: blue
+}
+
+.bar {
+    fill: royalblue;
+}
+
+.line {
+    stroke: red;
+}
+
+.highlighted_bar {
+    fill: orange;
+}
